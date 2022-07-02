@@ -14,14 +14,14 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 const users = [];
-const DATABASE_URI = 'postgres://jobycjncqytouy:5627e668226fa1395e7c6fff23aad0c808eb1c36c16f6717f75e4694d8a7a30a@ec2-3-229-11-55.compute-1.amazonaws.com:5432/divb07bs7vbtn';
+const DATABASE_URL = process.env.DATABASE_URL;
 const admins = [];
 
 app.use(cors());
 app.use(router);
 
 const client = new Client({
-  connectionString: DATABASE_URI,
+  connectionString: DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
